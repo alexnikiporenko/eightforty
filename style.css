@@ -130,14 +130,16 @@ ul#navbar li a:hover{
 ul#navbar li a.active{
 	opacity: 1;
 	text-decoration: underline;
-	text-decoration-thickness: 1px;
+	text-decoration-thickness: 2px;
 	text-underline-offset: 0.25em;
 }
 ul#navbar li#logo a{
 	font-size: 1.15rem;
 	font-weight: 650;
 	letter-spacing: 0.02em;
-	text-decoration: none;
+	text-decoration: underline;
+	text-decoration-thickness: 3px;
+	text-underline-offset: 0.22em;
 }
 
 @media (max-width: 520px){
@@ -285,10 +287,21 @@ div.events{
 }
 div.events table{
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+	/* Smaller tiles + predictable columns */
+	grid-template-columns: repeat(2, minmax(0, 1fr));
 	gap: var(--space-5);
 	width: 100%;
 	border-collapse: collapse;
+}
+@media (min-width: 640px){
+	div.events table{
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+}
+@media (min-width: 980px){
+	div.events table{
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+	}
 }
 div.events tr{ display: contents; }
 td.pictures{
