@@ -197,6 +197,11 @@ h1{
 	font-weight: 680;
 	overflow-wrap: anywhere;
 }
+h1 a{
+	text-decoration-thickness: 6px;
+	text-underline-offset: 0.12em;
+	text-decoration-color: color-mix(in oklab, var(--c-text), transparent 18%);
+}
 
 h2{
 	margin: var(--space-6) 0 var(--space-3);
@@ -285,46 +290,31 @@ figcaption{
 div.events{
 	padding-top: var(--space-6);
 }
-div.events table{
+div.events .events-grid{
 	display: grid;
-	/* Smaller tiles + predictable columns */
 	grid-template-columns: repeat(2, minmax(0, 1fr));
 	gap: var(--space-5);
-	width: 100%;
-	border-collapse: collapse;
 }
 @media (min-width: 640px){
-	div.events table{
+	div.events .events-grid{
 		grid-template-columns: repeat(3, minmax(0, 1fr));
 	}
 }
 @media (min-width: 980px){
-	div.events table{
+	div.events .events-grid{
 		grid-template-columns: repeat(4, minmax(0, 1fr));
 	}
 }
-div.events tr{ display: contents; }
-td.pictures{
-	display: block; /* override legacy inline-block */
-	padding: 0;
-}
-/* Hide legacy non-picture cells (e.g. <hr> rows) to prevent empty grid tiles */
-div.events td:not(.pictures){
-	display: none;
-}
-div.events a{
+div.events .events-grid a{
 	display: block;
 }
-div.events a:hover img.square{
+div.events .events-grid a:hover img.square{
 	transform: translateY(-2px);
 	transition: transform 180ms ease, filter 180ms ease;
 	filter: contrast(1.02);
 }
 @media (prefers-reduced-motion: reduce){
-	div.events a:hover img.square{ transform: none; }
-}
-div.events hr{
-	display: none;
+	div.events .events-grid a:hover img.square{ transform: none; }
 }
 
 /* Sponsors */
