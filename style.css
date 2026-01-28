@@ -37,7 +37,7 @@
 	--shadow-1: 0 1px 0 rgba(0,0,0,0.06);
 	--max-measure: 68ch;
 	--max-page: 1100px;
-	--nav-h: 64px;
+	--nav-h: 76px;
 }
 
 @supports (color: color-mix(in oklab, black, white)){
@@ -118,8 +118,8 @@ ul#navbar li#logo{
 ul#navbar li a{
 	display: inline-flex;
 	align-items: center;
-	padding: 0.85rem 0.30rem;
-	font-size: 0.98rem;
+	padding: 1.05rem 0.35rem;
+	font-size: 1.05rem;
 	letter-spacing: 0.01em;
 	text-decoration: none;
 	opacity: 0.92;
@@ -134,7 +134,7 @@ ul#navbar li a.active{
 	text-underline-offset: 0.25em;
 }
 ul#navbar li#logo a{
-	font-size: 1.15rem;
+	font-size: 1.28rem;
 	font-weight: 650;
 	letter-spacing: 0.02em;
 	text-decoration: underline;
@@ -148,25 +148,36 @@ ul#navbar li#logo a{
 		gap: var(--space-3);
 	}
 	ul#navbar li a{
-		font-size: 0.92rem;
-		padding: 0.75rem 0.20rem;
+		font-size: 0.98rem;
+		padding: 0.90rem 0.22rem;
 	}
 }
 
 /* Content wrappers (existing: .text / .contact / .events) */
 div.text,
-div.contact,
-div.events{
+div.contact{
 	width: min(100% - 2 * var(--space-5), var(--max-page));
 	margin: 0 auto;
 	padding: var(--space-7) 0 var(--space-8);
 }
 @media (max-width: 520px){
 	div.text,
-	div.contact,
-	div.events{
+	div.contact{
 		width: min(100% - 2 * var(--space-4), var(--max-page));
 		padding: var(--space-6) 0 var(--space-7);
+	}
+}
+
+/* Events wrapper: full-width, scrollable gallery */
+div.events{
+	width: 100%;
+	max-width: none;
+	margin: 0;
+	padding: var(--space-7) var(--space-5) var(--space-8);
+}
+@media (max-width: 520px){
+	div.events{
+		padding: var(--space-6) var(--space-4) var(--space-7);
 	}
 }
 
@@ -245,7 +256,7 @@ p.highlighted{
 	border-radius: var(--radius-2);
 	background: var(--c-surface);
 	box-shadow: var(--shadow-1);
-	font-size: 0.98rem;
+	font-size: 1.05rem;
 	letter-spacing: 0.06em;
 	text-transform: uppercase;
 }
@@ -287,29 +298,16 @@ figcaption{
 }
 
 /* Events index: convert legacy table layout into a responsive grid */
-div.events{
-	padding-top: var(--space-6);
-}
 div.events .events-grid{
 	display: grid;
-	grid-template-columns: repeat(2, minmax(0, 1fr));
-	gap: 0;
-}
-@media (min-width: 640px){
-	div.events .events-grid{
-		grid-template-columns: repeat(3, minmax(0, 1fr));
-	}
-}
-@media (min-width: 980px){
-	div.events .events-grid{
-		grid-template-columns: repeat(4, minmax(0, 1fr));
-	}
+	grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+	gap: 0; /* no gap */
 }
 div.events .events-grid a{
 	display: block;
 }
 div.events .events-grid img.square{
-	border-radius: 0;
+	border-radius: 0; /* matches original no-gap aesthetic */
 }
 div.events .events-grid a:hover img.square{
 	transform: translateY(-2px);
@@ -405,8 +403,6 @@ hr{
 	border-top: 1px solid var(--c-hairline);
 	margin: var(--space-6) 0;
 }
-
-/* Mailchimp embed (contact page) — keep it responsive and typographically consistent */
 #mc_embed_signup{
 	max-width: var(--max-measure);
 	margin: var(--space-5) 0 0;
@@ -453,4 +449,45 @@ hr{
 @media (prefers-reduced-motion: reduce){
 	#mc_embed_signup input[type="submit"]:hover{ transform: none; }
 }
+/* Mailchimp subscribe button – match site’s button style */
+#mc_embed_signup input#mc-embedded-subscribe{
+	display: inline-flex !important;
+	align-items: center !important;
+	justify-content: center !important;
 
+	padding: 0.85rem 1.05rem !important;
+	border: 1px solid var(--c-text) !important;
+	border-radius: var(--radius-2) !important;
+	background: var(--c-surface) !important;
+	box-shadow: var(--shadow-1) !important;
+
+	font-family: var(--font-sans) !important;
+	font-size: 0.98rem !important;
+	letter-spacing: 0.06em !important;
+	text-transform: uppercase !important;
+	color: var(--c-text) !important;
+
+	appearance: none !important;
+	background-image: none !important;
+
+	cursor: pointer;
+	opacity: 1 !important;
+}
+
+#mc_embed_signup input#mc-embedded-subscribe:hover{
+	transform: translateY(-1px);
+	transition: transform 160ms ease;
+}
+@media (prefers-reduced-motion: reduce){
+	#mc_embed_signup input#mc-embedded-subscribe:hover{
+		transform: none;
+	}
+}
+/* Fix Mailchimp clipping: override height + line-height + overflow */
+#mc_embed_signup input#mc-embedded-subscribe {
+	height: auto !important;
+	line-height: normal !important;
+	overflow: visible !important;
+	padding-top: 0.85rem !important;
+	padding-bottom: 0.85rem !important;
+}
