@@ -322,9 +322,12 @@ div.events .events-grid a:hover img.square{
 
 /* Sponsors */
 table.sponsors{
-	margin: var(--space-6) 0 0;
+	margin: var(--space-6) 0 var(--space-6);
 	padding: 0;
 	width: 100%;
+}
+table.sponsors + p{
+	margin-top: var(--space-6);
 }
 table.sponsors tr{
 	display: flex;
@@ -341,7 +344,6 @@ td.details{
 	display: block;
 	padding: 0;
 	max-width: none;
-	vertical-align: top;
 }
 img.sponsor{
 	/* smaller + consistent so sponsor-heavy rows don't sprawl */
