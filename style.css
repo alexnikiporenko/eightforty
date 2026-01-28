@@ -290,6 +290,16 @@ img.square{
 	border-radius: var(--radius-1);
 	background: color-mix(in oklab, var(--c-text), transparent 92%);
 }
+@media (max-width: 640px){
+    img.photo,
+    img.photowide,
+    img.photovertical,
+    img.gif {
+        max-width: 100% !important;
+        width: 100% !important;
+        height: auto !important;
+    }
+}
 
 figcaption{
 	margin-top: var(--space-2);
