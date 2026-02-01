@@ -392,10 +392,6 @@ img.sponsor{
 	max-height: 56px;
 	object-fit: contain;
 }
-img.onesponsor{
-	width: 100%;
-	max-width: 260px;
-}
 
 /* Embeds */
 iframe{
