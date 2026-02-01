@@ -233,7 +233,7 @@ div.contact h3{
 
 /* Home hero title */
 h1{
-	margin: var(--space-7) 0 var(--space-4);
+	margin: var(--space-7) 0 var(--space-7);
 	font-size: var(--fs-hero);
 	line-height: var(--lh-tight);
 	letter-spacing: -0.02em;
@@ -404,6 +404,7 @@ iframe{
 	border-radius: var(--radius-1);
 }
 iframe.soundcloudsmall{
+	margin-top: var(--space-6);   
 	height: 20px;
 	width: 100%;
 	max-width: 520px;
