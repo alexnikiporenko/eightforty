@@ -434,11 +434,13 @@ iframe.video{
 	z-index: 1;
 }
 
-/* Legacy .map class kept (though many pages use plain iframes) */
 iframe.map{
-	width: 100%;
-	max-width: 520px;
-	height: 320px;
+    width: 100%;
+    max-width: 520px;
+    height: 320px;
+    border: 0;
+    border-radius: var(--radius-1); 
+    margin-bottom: var(--space-6); 
 }
 
 hr{
